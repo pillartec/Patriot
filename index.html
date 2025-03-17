@@ -65,6 +65,29 @@
         .contact-info a:hover {
             text-decoration: underline;
         }
+        .news {
+            background: #fff;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .news h3 {
+            color: #003366;
+        }
+        .slider {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+        }
+        .slides img {
+            width: 100%;
+            display: none;
+        }
+        .active {
+            display: block !important;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +99,7 @@
         <a href="#about">Про нас</a>
         <a href="#schedule">Розклад</a>
         <a href="#gallery">Галерея</a>
+        <a href="#news">Новини</a>
         <a href="#contact">Контакти</a>
     </nav>
     
@@ -96,10 +120,18 @@
     
     <section id="gallery">
         <h2>Галерея</h2>
-        <div class="gallery">
-            <img src="untitled-217 (1).jpg" alt="Фото команди 1">
-            <img src="untitled-146.jpg" alt="Фото команди 2">
-            <img src="2S6A8504 (1).JPG" alt="Фото команди 3">
+        <div class="slider">
+            <img class="slides active" src="untitled-217 (1).jpg" alt="Фото команди 1">
+            <img class="slides" src="untitled-146.jpg" alt="Фото команди 2">
+            <img class="slides" src="2S6A8504 (1).JPG" alt="Фото команди 3">
+        </div>
+    </section>
+    
+    <section id="news">
+        <h2>Новини</h2>
+        <div class="news">
+            <h3>🏆 Команда виграла турнір!</h3>
+            <p>Наші юні спортсмени здобули перемогу в міжнародному турнірі! Вітаємо!</p>
         </div>
     </section>
     
@@ -115,5 +147,16 @@
     <footer>
         <p>&copy; 2025 Дитячий хокейний клуб "Патріот". Всі права захищені.</p>
     </footer>
+    <script>
+        let index = 0;
+        function showSlides() {
+            let slides = document.querySelectorAll(".slides");
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[index].classList.add("active");
+            index = (index + 1) % slides.length;
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+    </script>
 </body>
 </html>
